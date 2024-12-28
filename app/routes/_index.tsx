@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import BreadCrumbs from "~/components/breadcrumbs";
 import NavigationBar from "~/components/navbar";
 
 export const meta: MetaFunction = () => {
@@ -10,8 +11,11 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className='flex h-screen w-screen items-start justify-center'>
+    <div className='flex h-screen w-screen flex-col items-start gap-2'>
       <NavigationBar />
+      <div className='flex flex-col'>
+        <BreadCrumbs />
+      </div>
     </div>
   );
 }
