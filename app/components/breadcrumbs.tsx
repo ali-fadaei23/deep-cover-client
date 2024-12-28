@@ -6,7 +6,7 @@ export default function BreadCrumbs() {
 
   return (
     <Breadcrumbs
-      classNames={{ base: "pl-2" }}
+      classNames={{ base: "pl-2 font-bold" }}
       underline='active'
       onAction={(key) => setCurrentPage(key)}
     >

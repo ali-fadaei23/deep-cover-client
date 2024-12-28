@@ -4,8 +4,11 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
+  Avatar,
   Button,
 } from "@nextui-org/react";
+import { IoFileTray } from "react-icons/io5";
+import ThemeSwitch from "./theme-switch";
 
 export const AcmeLogo = () => {
   return (
@@ -27,31 +30,23 @@ export default function NavigationBar() {
         <AcmeLogo />
         <p className='font-bold text-inherit'>Deep Cover</p>
       </NavbarBrand>
-      <NavbarContent className='hidden sm:flex gap-4' justify='center'>
-        <NavbarItem>
-          <Link color='foreground' href='#'>
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link aria-current='page' href='#'>
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color='foreground' href='#'>
-            Integrations
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
+      {/* <NavbarContent className='hidden sm:flex gap-4' justify='center'></NavbarContent> */}
       <NavbarContent justify='end'>
         <NavbarItem className='hidden lg:flex'>
-          <Link href='#'>Login</Link>
+          <ThemeSwitch />
         </NavbarItem>
+        <NavbarItem className='hidden lg:flex'>
+          <div className='w-8 h-8 flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
+            <IoFileTray />
+          </div>
+        </NavbarItem>
+
         <NavbarItem>
-          <Button as={Link} color='primary' href='#' variant='flat'>
-            Sign Up
-          </Button>
+          <Avatar
+            isBordered
+            color='default'
+            src='https://i.pravatar.cc/150?u=a04258114e29026302d'
+          />
         </NavbarItem>
       </NavbarContent>
     </Navbar>

@@ -17,7 +17,7 @@ export default function Index() {
       <div className='flex w-full flex-col items-start'>
         <BreadCrumbs />
       </div>
-      <div className='w-2/3'>
+      <div className='w-2/3 h-full flex items-center'>
         <Manifests />
       </div>
     </div>
