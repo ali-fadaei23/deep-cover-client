@@ -1,5 +1,5 @@
-import { Accordion, AccordionItem } from "@nextui-org/react";
-import { IoPlay, IoTrash, IoPencil } from "react-icons/io5";
+import { Accordion, AccordionItem, Button } from "@nextui-org/react";
+import { IoPlay, IoTrash, IoPencil, IoEye } from "react-icons/io5";
 
 export default function ManifestItem() {
   const defaultContent =
@@ -8,22 +8,26 @@ export default function ManifestItem() {
   return (
     <Accordion variant='splitted'>
       <AccordionItem
+        className='rounded-md'
         classNames={{
           startContent: "w-[95%]",
+          content: "relative z-50",
+          trigger: "relative z-10",
         }}
         startContent={
-          <div className='w-full flex items-center justify-between flex-row gap-2'>
-            <p>User 1</p>
-
-            <div className='flex items-center justify-end flex-row gap-2 -mr-5'>
-              <div className='w-8 h-8 flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
-                <IoPencil />
-              </div>
-              <div className='w-8 h-8 flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
-                <IoTrash />
-              </div>
-              <div className='w-8 h-8 flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
-                <IoPlay />
+          <div>
+            <div className='w-full flex items-center justify-between flex-row gap-2'>
+              <p>User 1</p>
+              <div className='flex items-center justify-end flex-row gap-2 -mr-5'>
+                <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
+                  <IoPencil className='w-3 h-3' />
+                </Button>
+                <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
+                  <IoTrash className='w-3 h-3' />
+                </Button>
+                <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
+                  <IoPlay className='w-3 h-3' />
+                </Button>
               </div>
             </div>
           </div>
@@ -31,7 +35,29 @@ export default function ManifestItem() {
         key='1'
         aria-label='User 1'
       >
-        {defaultContent}
+        <div>
+          <div className='flex flex-row items-center justify-between'>
+            <p className='font-bold'>Title Template</p>
+            <div className='flex flex-row gap-5'>
+              <span className='font-semibold'>---</span>
+              <div className='flex w-8 h-8 items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
+                <IoEye className='w-6 h-6' />
+              </div>
+            </div>
+          </div>
+          <div className='flex flex-row items-center justify-between'>
+            <p className='font-bold'>Version</p>
+            <div className='flex flex-row'>
+              <span className='font-semibold'>1</span>
+            </div>
+          </div>
+          <div className='flex flex-row items-center justify-between'>
+            <p className='font-bold'>Agent</p>
+            <div className='flex flex-row'>
+              <span className='font-semibold'>Http</span>
+            </div>
+          </div>
+        </div>
       </AccordionItem>
     </Accordion>
   );

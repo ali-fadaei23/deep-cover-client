@@ -1,7 +1,12 @@
+"use client";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { useSwitch, VisuallyHidden, SwitchProps } from "@nextui-org/react";
 import { IoSunny, IoMoon } from "react-icons/io5";
 
 export default function ThemeSwitch(props: SwitchProps) {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
   const {
     Component,
     slots,
@@ -10,6 +15,12 @@ export default function ThemeSwitch(props: SwitchProps) {
     getInputProps,
     getWrapperProps,
   } = useSwitch(props);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <div className='flex flex-row gap-2'>
@@ -27,7 +38,11 @@ export default function ThemeSwitch(props: SwitchProps) {
             ],
           })}
         >
-          {isSelected ? <IoSunny /> : <IoMoon />}
+          {isSelected ? (
+            <IoSunny onClick={() => setTheme("light")} />
+          ) : (
+            <IoMoon onClick={() => setTheme("dark")} />
+          )}
         </div>
       </Component>
     </div>

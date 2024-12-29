@@ -12,12 +12,13 @@ import ManifestItem from "./accordion";
 
 export default function Manifests() {
   return (
-    <Card className='max-w-full w-full h-[70vh]'>
+    <Card radius='sm' className='max-w-full w-full h-[70vh]'>
       <CardHeader className='flex gap-3'>
         <div className='flex w-full items-center justify-between'>
           <p className='text-lg font-bold'>Manifests</p>
           <div className='flex flex-row gap-2'>
             <Input
+              radius='sm'
               classNames={{ base: "w-72" }}
               variant='bordered'
               endContent={
@@ -26,6 +27,7 @@ export default function Manifests() {
               type='text'
             />
             <Button
+              radius='sm'
               className='font-bold text-gray-900'
               color='default'
               variant='solid'
@@ -35,7 +37,7 @@ export default function Manifests() {
           </div>
         </div>
       </CardHeader>
-      <Divider className='h-[1.5px]' />
+      <Divider className='w-[63vw] m-auto' />
       <CardBody>
         <div className='flex flex-col gap-3'>
           <ManifestItem />
@@ -43,8 +45,6 @@ export default function Manifests() {
           <ManifestItem />
         </div>
       </CardBody>
-
-      <CardFooter></CardFooter>
     </Card>
   );
 }
