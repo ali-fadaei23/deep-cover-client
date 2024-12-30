@@ -1,4 +1,5 @@
 import { Accordion, AccordionItem, Button } from "@nextui-org/react";
+import { Link } from "@remix-run/react";
 import { IoPlay, IoTrash, IoPencil, IoEye } from "react-icons/io5";
 
 export default function ManifestItem() {
@@ -11,22 +12,23 @@ export default function ManifestItem() {
         className='rounded-md'
         classNames={{
           startContent: "w-[95%]",
-          content: "relative z-50",
-          trigger: "relative z-10",
+          trigger: "cursor-pointer",
         }}
         startContent={
           <div>
             <div className='w-full flex items-center justify-between flex-row gap-2'>
-              <p>User 1</p>
+              <p className='font-semibold'>User 1</p>
               <div className='flex items-center justify-end flex-row gap-2 -mr-5'>
                 <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
-                  <IoPencil className='w-3 h-3' />
+                  <IoPencil className='w-4 h-4' />
                 </Button>
                 <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
-                  <IoTrash className='w-3 h-3' />
+                  <IoTrash className='w-4 h-4' />
                 </Button>
                 <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
-                  <IoPlay className='w-3 h-3' />
+                  <Link to={`/new`}>
+                    <IoPlay className='w-4 h-4' />
+                  </Link>
                 </Button>
               </div>
             </div>

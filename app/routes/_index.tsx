@@ -16,7 +16,7 @@ export default function Index() {
   return (
     <div className='flex h-screen w-screen flex-col items-center gap-2'>
       {/* <Banner />   */}
-      <NavigationBar />
+      {/* <NavigationBar /> */}
       <div className='flex w-full flex-col items-start'>
         <BreadCrumbs />
       </div>

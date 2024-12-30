@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar,
   NavbarBrand,
@@ -9,6 +10,7 @@ import {
 } from "@nextui-org/react";
 import { IoFileTray } from "react-icons/io5";
 import ThemeSwitch from "./theme-switch";
+import { useTheme } from "next-themes";
 
 export const AcmeLogo = () => {
   return (
@@ -24,9 +26,11 @@ export const AcmeLogo = () => {
 };
 
 export default function NavigationBar() {
+  const { theme, setTheme } = useTheme();
   return (
     <Navbar
-      className='bg-zinc-700 dark:bg-gray-950'
+      className='bg-zinc-800 dark:bg-gray-950'
+      classNames={{ wrapper: "h-[4.5rem]" }}
       isBordered
       maxWidth='full'
       shouldHideOnScroll
@@ -37,19 +41,24 @@ export default function NavigationBar() {
       </NavbarBrand>
       {/* <NavbarContent className='hidden sm:flex gap-4' justify='center'></NavbarContent> */}
       <NavbarContent justify='end'>
-        <NavbarItem className='hidden lg:flex'>
+        <NavbarItem>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className='hidden lg:flex'>
-          <div className='w-8 h-8 flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
+        <NavbarItem>
+          <Button
+            isIconOnly
+            className='bg-black text-white'
+            color={theme === "light" ? "default" : "success"}
+            variant='bordered'
+          >
             <IoFileTray />
-          </div>
+          </Button>
         </NavbarItem>
 
         <NavbarItem>
           <Avatar
-            isBordered
-            color='default'
+            size='lg'
+            color='warning'
             src='https://i.pravatar.cc/150?u=a04258114e29026302d'
           />
         </NavbarItem>

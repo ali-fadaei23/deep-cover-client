@@ -15,12 +15,12 @@ export default function Manifests() {
     <Card radius='sm' className='max-w-full w-full h-[70vh]'>
       <CardHeader className='flex gap-3'>
         <div className='flex w-full items-center justify-between'>
-          <p className='text-lg font-bold'>Manifests</p>
+          <p className='text-3xl font-extrabold'>Manifests</p>
           <div className='flex flex-row gap-2'>
             <Input
               radius='sm'
               classNames={{ base: "w-72" }}
-              variant='bordered'
+              variant='faded'
               endContent={
                 <IoSearch className='text-2xl text-default-400 pointer-events-none flex-shrink-0' />
               }
@@ -28,16 +28,16 @@ export default function Manifests() {
             />
             <Button
               radius='sm'
-              className='font-bold text-gray-900'
+              className='font-extrabold text-gray-800 dark:text-white'
               color='default'
-              variant='solid'
+              variant='shadow'
             >
               Add
             </Button>
           </div>
         </div>
       </CardHeader>
-      <Divider className='w-[63vw] m-auto' />
+      <Divider className='w-[60vw] m-auto' />
       <CardBody>
         <div className='flex flex-col gap-3'>
           <ManifestItem />
