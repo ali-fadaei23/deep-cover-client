@@ -2,8 +2,8 @@ import type { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Deep COVER | new" },
-    { name: "description", content: "Welcome to new page" },
+    { title: "Deep COVER | Coming Soon..." },
+    { name: "description", content: "Coming soooooooon!" },
   ];
 };
 

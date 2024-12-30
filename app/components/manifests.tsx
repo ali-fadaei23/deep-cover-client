@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/react";
 import { IoSearch } from "react-icons/io5";
 import ManifestItem from "./accordion";
+import { Link } from "@remix-run/react";
 
 export default function Manifests() {
   return (
@@ -26,14 +27,16 @@ export default function Manifests() {
               }
               type='text'
             />
-            <Button
-              radius='sm'
-              className='font-extrabold text-gray-800 dark:text-white'
-              color='default'
-              variant='shadow'
-            >
-              Add
-            </Button>
+            <Link to={"/add-user"}>
+              <Button
+                radius='sm'
+                className='font-extrabold text-gray-800 dark:text-white'
+                color='default'
+                variant='shadow'
+              >
+                Add
+              </Button>
+            </Link>
           </div>
         </div>
       </CardHeader>

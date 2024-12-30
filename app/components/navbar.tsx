@@ -4,13 +4,13 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Avatar,
   Button,
 } from "@nextui-org/react";
 import { IoFileTray } from "react-icons/io5";
 import ThemeSwitch from "./theme-switch";
 import { useTheme } from "next-themes";
+import { Link } from "@remix-run/react";
 
 export const AcmeLogo = () => {
   return (
@@ -26,7 +26,7 @@ export const AcmeLogo = () => {
 };
 
 export default function NavigationBar() {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <Navbar
       className='bg-zinc-800 dark:bg-gray-950'
@@ -36,8 +36,10 @@ export default function NavigationBar() {
       shouldHideOnScroll
     >
       <NavbarBrand>
-        <AcmeLogo />
-        <p className='font-bold text-white text-inherit'>Deep Cover</p>
+        <Link className='flex flex-row justify-center items-center' to={"/"}>
+          <AcmeLogo />
+          <p className='font-bold text-white text-inherit'>Deep Cover</p>
+        </Link>
       </NavbarBrand>
       {/* <NavbarContent className='hidden sm:flex gap-4' justify='center'></NavbarContent> */}
       <NavbarContent justify='end'>

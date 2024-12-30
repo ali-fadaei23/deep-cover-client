@@ -25,11 +25,11 @@ export default function ManifestItem() {
                 <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
                   <IoTrash className='w-4 h-4' />
                 </Button>
-                <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
-                  <Link to={`/new`}>
+                <Link to={`/new`}>
+                  <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
                     <IoPlay className='w-4 h-4' />
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
