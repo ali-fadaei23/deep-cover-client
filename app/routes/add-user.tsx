@@ -1,7 +1,10 @@
-import { Button, Input } from "@nextui-org/react";
+import type { Selection } from "@nextui-org/react";
+import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import { useState } from "react";
 import ManifestOption from "~/components/manifest-option";
+import { IoStopwatch } from "react-icons/io5";
 
 export const meta: MetaFunction = () => {
   return [
@@ -11,6 +14,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function AddUser() {
+  const [value, setValue] = useState<Selection>(new Set(["http"]));
+  const [value2, setValue2] = useState<Selection>(new Set(["query"]));
+  const [value3, setValue3] = useState<Selection>(new Set(["manifest"]));
   return (
     <div className='flex h-screen w-screen flex-col items-center justify-center gap-2'>
       <div className='w-2/5 flex flex-row items-end justify-between gap-2'>
@@ -46,16 +52,92 @@ export default function AddUser() {
           </Button>
         </div>
       </div>
-      <div className='w-2/5 flex flex-row items-center justify-between'>
+      <div className='w-2/5 flex flex-row items-center justify-between my-2'>
         <p className='font-bold'>Title Template</p>
         <Input
           radius='sm'
           classNames={{ base: "w-72" }}
+          placeholder='Enter your title template...'
           variant='faded'
           type='text'
         />
       </div>
       <ManifestOption />
+      <div className='w-2/5 flex flex-row items-center justify-between my-1'>
+        <p className='font-bold'>Version</p>
+        <Input
+          defaultValue='1'
+          radius='sm'
+          classNames={{ base: "w-32" }}
+          variant='faded'
+          type='text'
+        />
+      </div>
+      <div className='w-2/5 flex flex-row items-center justify-between my-1'>
+        <p className='font-bold'>Agent</p>
+        <Select
+          classNames={{ base: "w-32" }}
+          radius='sm'
+          className='max-w-xs'
+          selectedKeys={value}
+          onSelectionChange={setValue}
+          defaultSelectedKeys={"value"}
+          variant='faded'
+        >
+          <SelectItem key={"http"}>Http</SelectItem>
+        </Select>
+      </div>
+      <div className='w-2/5 flex flex-row items-center justify-between my-1'>
+        <p className='font-bold'>Version</p>
+        <Input
+          placeholder='Enter your url...'
+          radius='sm'
+          classNames={{ base: "w-52" }}
+          variant='faded'
+          type='text'
+        />
+      </div>
+      <div className='w-2/5 flex flex-row items-center justify-between my-1'>
+        <p className='font-bold'>Headers</p>
+        <p>___________________________</p>
+      </div>
+      <div className='w-2/5 flex flex-row items-center justify-between my-1'>
+        <p className='font-bold'>Debounce</p>
+        <Input
+          classNames={{ base: "w-32" }}
+          variant='faded'
+          placeholder='to seconds'
+          type='text'
+          endContent={<IoStopwatch className='w-6 h-6 cursor-pointer' />}
+        />{" "}
+      </div>
+      <div className='w-2/5 flex flex-row items-center justify-between my-1'>
+        <p className='font-bold'>Payload</p>
+        <Select
+          classNames={{ base: "w-32" }}
+          radius='sm'
+          className='max-w-xs'
+          selectedKeys={value2}
+          onSelectionChange={setValue2}
+          variant='faded'
+        >
+          <SelectItem key={"query"}>Query</SelectItem>
+          <SelectItem key={"body"}>Body</SelectItem>
+        </Select>
+      </div>{" "}
+      <div className='w-2/5 flex flex-row items-center justify-between my-1'>
+        <p className='font-bold'>Payload Root</p>
+        <Select
+          classNames={{ base: "w-52" }}
+          radius='sm'
+          className='max-w-xs'
+          selectedKeys={value3}
+          onSelectionChange={setValue3}
+          variant='faded'
+        >
+          <SelectItem key={"manifest"}>From Manifest</SelectItem>
+        </Select>
+      </div>
     </div>
   );
 }

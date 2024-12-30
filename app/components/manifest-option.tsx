@@ -1,3 +1,4 @@
+import type { Selection } from "@nextui-org/react";
 import {
   Button,
   Card,
@@ -6,15 +7,20 @@ import {
   CardHeader,
   Divider,
   Input,
+  Select,
+  SelectItem,
 } from "@nextui-org/react";
 import BreadCrumbs from "./breadcrumbs";
-import { IoAdd } from "react-icons/io5";
+import { IoAdd, IoAddCircle, IoArrowUpCircle } from "react-icons/io5";
+import { useState } from "react";
 
 export default function ManifestOption() {
+  const [value, setValue] = useState<Selection>(new Set(["value"]));
+
   return (
     <div className='w-2/5 flex flex-col items-center justify-between'>
       <p className='w-full font-extrabold'>Manifests</p>
-      <Card radius='sm' className='max-w-full w-full'>
+      <Card radius='sm' className='max-w-full w-full my-3'>
         <CardHeader className='flex gap-3'>
           <div className='flex w-full items-center justify-between'>
             <div className='flex flex-row gap-2'>
@@ -38,18 +44,31 @@ export default function ManifestOption() {
                 radius='none'
                 classNames={{ base: "w-72" }}
                 variant='faded'
-                placeholder='key 2'
                 type='text'
+                endContent={
+                  <div>
+                    {Array.from(value).includes("value") ? (
+                      <IoAddCircle className='w-6 h-6 cursor-pointer' />
+                    ) : (
+                      <IoArrowUpCircle className='w-6 h-6 cursor-pointer' />
+                    )}
+                  </div>
+                }
               />{" "}
-              <Input
+              <Select
+                classNames={{ base: "w-72", trigger: "rounded-r-lg" }}
                 radius='none'
-                classNames={{ base: "w-72", inputWrapper: "rounded-r-lg" }}
+                className='max-w-xs'
+                selectedKeys={value}
+                onSelectionChange={setValue}
+                defaultSelectedKeys={"value"}
                 variant='faded'
-                placeholder='value'
-                type='text'
-              />
+              >
+                <SelectItem key={"value"}>Value</SelectItem>
+                <SelectItem key={"object"}>Object</SelectItem>
+              </Select>
             </div>
-            <div className='flex flex-row items-center'>
+            {/* <div className='flex flex-row items-center'>
               <Input
                 radius='none'
                 className='rounded-s-sm'
@@ -65,14 +84,20 @@ export default function ManifestOption() {
                 placeholder='Recarsive'
                 type='text'
               />{" "}
-              <Input
+              <Select
+                aria-label='value or object'
+                classNames={{ base: "w-72", trigger: "rounded-r-lg" }}
                 radius='none'
-                classNames={{ base: "w-72", inputWrapper: "rounded-r-lg" }}
+                className='max-w-xs'
+                selectedKeys={value}
+                onSelectionChange={setValue}
+                defaultSelectedKeys={value}
                 variant='faded'
-                placeholder='Object'
-                type='text'
-              />
-            </div>
+              >
+                <SelectItem key={"value"}>Value</SelectItem>
+                <SelectItem key={"object"}>Object</SelectItem>
+              </Select>
+            </div> */}
           </div>
         </CardBody>
         <CardFooter>
