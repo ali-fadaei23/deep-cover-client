@@ -2,14 +2,17 @@ import {
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { ActionFunctionArgs, LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 import { Providers } from "./providers";
 import NavigationBar from "./components/navbar";
+import Footer from "./components/footer";
+import { deleteTest, getTests } from "./data";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -24,6 +27,13 @@ export const links: LinksFunction = () => [
   },
 ];
 
+// export const action = async ({ params, request }: ActionFunctionArgs) => {
+//   const tests = await getTests();
+
+//   await deleteTest();
+//   return redirect("/");
+// };
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
@@ -37,6 +47,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Providers>
           <NavigationBar />
           {children}
+          <Footer />
           <ScrollRestoration />
           <Scripts />
         </Providers>

@@ -2,7 +2,6 @@ import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Divider,
   Button,
   Input,
@@ -10,8 +9,41 @@ import {
 import { IoSearch } from "react-icons/io5";
 import ManifestItem from "./accordion";
 import { Link } from "@remix-run/react";
+import { deleteTest, getTests, TestMutation } from "~/data";
+import { AiOutlineDelete } from "react-icons/ai";
 
-export default function Manifests() {
+// export const loader = async ({ params }: LoaderFunctionArgs) => {
+//   // invariant(params.contactId, "Missing contactId param");
+//   const tests = await getTests();
+
+//   if (!tests) {
+//     throw new Response("Not Found", { status: 404 });
+//   }
+
+//   console.log(tests);
+//   return Response.json({ tests });
+// };
+
+export default function Manifests(props: {
+  tests: {
+    id: number;
+    name: string;
+    titleTemplate: string;
+    version: string;
+    agent: string;
+  }[];
+}) {
+  // const { tests } = useLoaderData<typeof loader>();
+  // console.log(tests);
+
+  const handleDelete = async (id: number) => {
+    const tests = await getTests();
+
+    console.log(tests);
+
+    return console.log(id);
+  };
+
   return (
     <Card radius='sm' className='max-w-full w-full h-[70vh]'>
       <CardHeader className='flex gap-3'>
@@ -43,9 +75,20 @@ export default function Manifests() {
       <Divider className='w-[60vw] m-auto' />
       <CardBody>
         <div className='flex flex-col gap-3'>
-          <ManifestItem />
-          <ManifestItem />
-          <ManifestItem />
+          {props.tests.map((test: TestMutation) => {
+            return (
+              <div key={test.id}>
+                <ManifestItem
+                  onDelete={() => handleDelete(test.id!)}
+                  id={test.id}
+                  name={test.name}
+                  titleTemplate={test.titleTemplate}
+                  version={test.version}
+                  agent={test.agent}
+                />
+              </div>
+            );
+          })}
         </div>
       </CardBody>
     </Card>

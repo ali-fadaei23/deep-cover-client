@@ -1,9 +1,14 @@
 // import Banner from "~/components/banner";
 // import NavigationBar from "~/components/navbar";
-import type { MetaFunction } from "@remix-run/node";
+import {
+  ActionFunctionArgs,
+  LoaderFunctionArgs,
+  type MetaFunction,
+} from "@remix-run/node";
 import BreadCrumbs from "~/components/breadcrumbs";
-import Footer from "~/components/footer";
 import Manifests from "~/components/manifests";
+import { deleteTest, getTests } from "~/data";
+import { redirect, useLoaderData } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,18 +17,26 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+  const tests = await getTests();
+  if (!tests) {
+    throw new Response("Not Found", { status: 404 });
+  }
+
+  return Response.json({ tests });
+};
+
 export default function Index() {
+  const { tests } = useLoaderData<typeof loader>();
+
   return (
     <div className='flex h-screen w-screen flex-col items-center gap-2'>
-      {/* <Banner />   */}
-      {/* <NavigationBar /> */}
       <div className='flex w-full flex-col items-start'>
         <BreadCrumbs />
       </div>
       <div className='w-2/3 h-full flex items-center'>
-        <Manifests />
+        <Manifests tests={tests} />
       </div>
-      <Footer />
     </div>
   );
 }

@@ -33,6 +33,8 @@ export default function ManifestOption() {
           <div className='flex flex-col gap-2'>
             <div className='flex flex-row items-center'>
               <Input
+                name='keyOption'
+                aria-label='Key Input'
                 radius='none'
                 className='rounded-s-sm'
                 classNames={{ base: "w-72", inputWrapper: "rounded-l-lg" }}
@@ -41,6 +43,8 @@ export default function ManifestOption() {
                 type='text'
               />{" "}
               <Input
+                name='manifestOption'
+                aria-label='Text Input Manifest Option'
                 radius='none'
                 classNames={{ base: "w-72" }}
                 variant='faded'
@@ -56,6 +60,8 @@ export default function ManifestOption() {
                 }
               />{" "}
               <Select
+                name='valueOrObject'
+                aria-label='Text Input Manifest Option'
                 classNames={{ base: "w-72", trigger: "rounded-r-lg" }}
                 radius='none'
                 className='max-w-xs'
@@ -105,8 +111,7 @@ export default function ManifestOption() {
             <Button
               isIconOnly
               radius='full'
-              className='font-extrabold text-gray-800'
-              color='warning'
+              className='font-extrabold'
               variant='faded'
             >
               <IoAdd />
