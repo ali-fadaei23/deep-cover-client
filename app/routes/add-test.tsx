@@ -29,7 +29,7 @@ export const action = async ({ params, request }: ActionFunctionArgs) => {
   return redirect("/");
 };
 
-export default function AddUser() {
+export default function AddTest() {
   const navigate = useNavigate();
   const [value, setValue] = useState<Selection>(new Set(["http"]));
   const [value2, setValue2] = useState<Selection>(new Set(["query"]));
@@ -44,7 +44,7 @@ export default function AddUser() {
   return (
     <Form
       method='post'
-      action='/add-user'
+      action='/add-test'
       className='flex flex-col items-center justify-center my-32'
     >
       <div className='flex h-screen w-screen flex-col items-center justify-center gap-2'>

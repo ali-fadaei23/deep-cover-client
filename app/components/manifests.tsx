@@ -9,8 +9,7 @@ import {
 import { IoSearch } from "react-icons/io5";
 import ManifestItem from "./accordion";
 import { Link } from "@remix-run/react";
-import { deleteTest, getTests, TestMutation } from "~/data";
-import { AiOutlineDelete } from "react-icons/ai";
+import { getTests, TestMutation } from "~/data";
 
 // export const loader = async ({ params }: LoaderFunctionArgs) => {
 //   // invariant(params.contactId, "Missing contactId param");
@@ -59,7 +58,7 @@ export default function Manifests(props: {
               }
               type='text'
             />
-            <Link to={"/add-user"}>
+            <Link to={"/add-test"}>
               <Button
                 radius='sm'
                 className='font-extrabold text-gray-800 dark:text-white'

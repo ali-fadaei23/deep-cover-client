@@ -1,8 +1,6 @@
 import { Accordion, AccordionItem, Button, Form } from "@nextui-org/react";
-import { ActionFunctionArgs } from "@remix-run/node";
-import { Link, redirect } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import { IoPlay, IoTrash, IoPencil, IoEye } from "react-icons/io5";
-import { deleteTest } from "~/data";
 
 export default function ManifestItem({
   id,
@@ -10,7 +8,6 @@ export default function ManifestItem({
   titleTemplate,
   version,
   agent,
-  onDelete,
 }: any) {
   return (
     <Accordion variant='splitted'>
@@ -28,12 +25,19 @@ export default function ManifestItem({
                 <p className='font-semibold'>{name}</p>
               </div>
               <div className='flex items-center justify-end flex-row gap-2 -mr-5'>
-                <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
-                  <IoPencil className='w-4 h-4' />
-                </Button>
+                <Form action={`/edit/${id}`}>
+                  <Button
+                    type='submit'
+                    variant='faded'
+                    color='default'
+                    className='min-w-fit rounded-lg bg-default-100 hover:bg-default-200 flex items-center justify-center'
+                  >
+                    <IoPencil className='w-4 h-4' />
+                  </Button>
+                </Form>
 
                 <Form
-                  action='destroy'
+                  action={`/destroy/${id}`}
                   method='post'
                   onSubmit={(event) => {
                     const response = confirm(
@@ -45,8 +49,8 @@ export default function ManifestItem({
                   }}
                 >
                   <Button
-                    value={id}
-                    name='deletedTest'
+                    variant='faded'
+                    color='default'
                     type='submit'
                     className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'
                   >
@@ -54,15 +58,12 @@ export default function ManifestItem({
                   </Button>
                 </Form>
 
-                {/* <Button
-                  onPress={onDelete}
-                  className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'
-                >
-                  <IoTrash className='w-4 h-4' />
-                </Button> */}
-
                 <Link to={`/new`}>
-                  <Button className='min-w-fit flex items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
+                  <Button
+                    variant='faded'
+                    color='default'
+                    className='min-w-fit rounded-lg bg-default-100 hover:bg-default-200 flex items-center justify-center'
+                  >
                     <IoPlay className='w-4 h-4' />
                   </Button>
                 </Link>

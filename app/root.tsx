@@ -2,17 +2,15 @@ import {
   Links,
   Meta,
   Outlet,
-  redirect,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { ActionFunctionArgs, LinksFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 import { Providers } from "./providers";
 import NavigationBar from "./components/navbar";
 import Footer from "./components/footer";
-import { deleteTest, getTests } from "./data";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },

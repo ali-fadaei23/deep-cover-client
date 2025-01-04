@@ -1,14 +1,8 @@
-// import Banner from "~/components/banner";
-// import NavigationBar from "~/components/navbar";
-import {
-  ActionFunctionArgs,
-  LoaderFunctionArgs,
-  type MetaFunction,
-} from "@remix-run/node";
+import { LoaderFunctionArgs, type MetaFunction } from "@remix-run/node";
 import BreadCrumbs from "~/components/breadcrumbs";
 import Manifests from "~/components/manifests";
-import { deleteTest, getTests } from "~/data";
-import { redirect, useLoaderData } from "@remix-run/react";
+import { getTests } from "~/data";
+import { useLoaderData } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
