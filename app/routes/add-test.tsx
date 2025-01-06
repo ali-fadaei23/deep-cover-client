@@ -24,6 +24,7 @@ export const meta: MetaFunction = () => {
 
 export const action = async ({ params, request }: ActionFunctionArgs) => {
   const formData = await request.formData();
+
   const updates = Object.fromEntries(formData);
   await createTest(updates);
   return redirect("/");
@@ -94,7 +95,7 @@ export default function AddTest() {
             type='text'
           />
         </div>
-        <ManifestOption />
+        <ManifestOption keyOption={""} option={""} valueOrObject={"value"} />
         <div className='w-2/5 flex flex-row items-center justify-between my-1'>
           <p className='font-bold'>Version</p>
           <Input

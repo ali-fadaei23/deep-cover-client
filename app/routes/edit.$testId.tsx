@@ -109,7 +109,11 @@ export default function EditTest() {
             type='text'
           />
         </div>
-        <ManifestOption />
+        <ManifestOption
+          keyOption={test.keyOption}
+          option={test.manifestOption}
+          valueOrObject={test.valueOrObject}
+        />
         <div className='w-2/5 flex flex-row items-center justify-between my-1'>
           <p className='font-bold'>Version</p>
           <Input

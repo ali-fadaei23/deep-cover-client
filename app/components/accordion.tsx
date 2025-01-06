@@ -58,15 +58,16 @@ export default function ManifestItem({
                   </Button>
                 </Form>
 
-                <Link to={`/new`}>
+                <Form action={`/new`}>
                   <Button
+                    type='submit'
                     variant='faded'
                     color='default'
                     className='min-w-fit rounded-lg bg-default-100 hover:bg-default-200 flex items-center justify-center'
                   >
                     <IoPlay className='w-4 h-4' />
                   </Button>
-                </Link>
+                </Form>
               </div>
             </div>
           </div>
@@ -81,6 +82,7 @@ export default function ManifestItem({
               <span className='font-semibold'>{titleTemplate}</span>
               <div className='flex w-8 h-8 items-center justify-center rounded-lg bg-default-100 hover:bg-default-200'>
                 <IoEye className='w-6 h-6' />
+                <div></div>
               </div>
             </div>
           </div>
