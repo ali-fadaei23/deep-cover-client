@@ -55,7 +55,7 @@ export function ManifestInput({
           aria-label='Key Input'
           radius='none'
           className='rounded-s-sm'
-          classNames={{ base: "w-72", inputWrapper: "rounded-l-lg" }}
+          classNames={{ base: "w-56", inputWrapper: "rounded-l-lg" }}
           variant='faded'
           placeholder='key 1'
           type='text'
@@ -94,7 +94,7 @@ export function ManifestInput({
             size='lg'
             className='flex flex-col'
             classNames={{
-              base: "w-96",
+              base: "w-80",
               input: "overflow-x-scroll",
             }}
             variant='faded'
@@ -114,7 +114,7 @@ export function ManifestInput({
           size='lg'
           name='valueOrObject'
           aria-label='Text Input Manifest Option'
-          classNames={{ base: "w-72", trigger: "rounded-r-lg" }}
+          classNames={{ base: "w-36", trigger: "rounded-r-lg" }}
           radius='none'
           className='max-w-xs'
           selectedKeys={value}
