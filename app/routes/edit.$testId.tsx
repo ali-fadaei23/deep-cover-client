@@ -1,20 +1,6 @@
-import type { Selection } from "@nextui-org/react";
-import { IoStopwatch, IoAdd } from "react-icons/io5";
-import {
-  Button,
-  Input,
-  Listbox,
-  ListboxItem,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import { Form, redirect, useLoaderData, useNavigate } from "@remix-run/react";
-import { ListboxWrapper } from "~/components/list-box-wrapper";
-import ManifestOption from "~/components/manifest-option";
+import { Form, redirect, useLoaderData } from "@remix-run/react";
 import { getTest, updateTest } from "~/data";
-import { useMemo, useState } from "react";
-import AddTest from "./add-test";
 import TestForm from "~/components/test-form";
 
 export const action = async ({ params, request }: ActionFunctionArgs) => {
@@ -41,22 +27,6 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
 
 export default function EditTest() {
   const { test } = useLoaderData<typeof loader>();
-
-  // const navigate = useNavigate();
-  // const [chips, setChips] = useState<string[]>([]);
-  // const [value, setValue] = useState<Selection>(new Set([test.agent]));
-  // const [value2, setValue2] = useState<Selection>(new Set([test.payload]));
-  // const [value3, setValue3] = useState<Selection>(new Set([test.payloadRoot]));
-  // const [selectedKeys, setSelectedKeys] = useState<Selection>(
-  //   new Set([test.headers])
-  // );
-  // const selectedValue = useMemo(
-  //   () => Array.from(selectedKeys).join(", "),
-  //   [selectedKeys]
-  // );
-
-  // console.log(JSON.parse(test));
-
   return (
     <Form
       key={test.id}

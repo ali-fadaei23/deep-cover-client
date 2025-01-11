@@ -7,28 +7,14 @@ import {
   Listbox,
   ListboxItem,
 } from "@nextui-org/react";
-import type { ActionFunctionArgs, MetaFunction } from "@remix-run/node";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ManifestOption from "~/components/manifest-option";
-import { IoStopwatch, IoAdd, IoTrash } from "react-icons/io5";
+import { IoStopwatch, IoAdd } from "react-icons/io5";
 import { ListboxWrapper } from "~/components/list-box-wrapper";
-import { Form, redirect, useNavigate } from "@remix-run/react";
-import { createTest } from "~/data";
-
-// const headersList: HeadersMutaion = [{ title: "headers-1" }];
-
-// export type HeadersMutaion = { title: string }[];
-
-// export type Headers = HeadersMutaion &
-//   {
-//     id: number;
-//     createdAt?: string;
-//   }[];
+import { useNavigate } from "@remix-run/react";
 
 export default function TestForm({ test }: any) {
   const headerItems = JSON.parse(test.headersList);
-  // console.log(headerItems + "  222222222222222");
-
   const navigate = useNavigate();
   const [chips, setChips] = useState<string[]>([]);
   const [value, setValue] = useState<Selection>(new Set(["http"]));
@@ -39,10 +25,6 @@ export default function TestForm({ test }: any) {
     new Set([test.selectedHeaders])
   );
 
-  useEffect(() => {
-    console.log(headerItems + "  222222222222222");
-  }, [headerItems, headers]);
-
   const selectedValue = useMemo(
     () => Array.from(selectedKeys).join(", "),
     [selectedKeys]
@@ -51,8 +33,6 @@ export default function TestForm({ test }: any) {
   const handleAddHeaders = () => {
     const id = Math.round(Math.random() * 100);
     const newHeaders = [...headers, `headers-${id}`];
-    console.log(headerItems);
-
     setHeaders(newHeaders);
   };
 
