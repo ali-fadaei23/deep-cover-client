@@ -9,19 +9,7 @@ import {
 import { IoSearch } from "react-icons/io5";
 import ManifestItem from "./accordion";
 import { Link } from "@remix-run/react";
-import { getTests, TestMutation } from "~/data";
-
-// export const loader = async ({ params }: LoaderFunctionArgs) => {
-//   // invariant(params.contactId, "Missing contactId param");
-//   const tests = await getTests();
-
-//   if (!tests) {
-//     throw new Response("Not Found", { status: 404 });
-//   }
-
-//   console.log(tests);
-//   return Response.json({ tests });
-// };
+import { TestMutation } from "~/data";
 
 export default function Manifests(props: {
   tests: {
@@ -32,17 +20,6 @@ export default function Manifests(props: {
     agent: string;
   }[];
 }) {
-  // const { tests } = useLoaderData<typeof loader>();
-  // console.log(tests);
-
-  const handleDelete = async (id: number) => {
-    const tests = await getTests();
-
-    console.log(tests);
-
-    return console.log(id);
-  };
-
   return (
     <Card radius='sm' className='max-w-full w-full h-[70vh]'>
       <CardHeader className='flex gap-3'>
@@ -78,7 +55,6 @@ export default function Manifests(props: {
             return (
               <div key={test.id}>
                 <ManifestItem
-                  onDelete={() => handleDelete(test.id!)}
                   id={test.id}
                   name={test.name}
                   titleTemplate={test.titleTemplate}

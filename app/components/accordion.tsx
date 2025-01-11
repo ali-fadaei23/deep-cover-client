@@ -1,5 +1,4 @@
 import { Accordion, AccordionItem, Button, Form } from "@nextui-org/react";
-import { Link } from "@remix-run/react";
 import { IoPlay, IoTrash, IoPencil, IoEye } from "react-icons/io5";
 
 export default function ManifestItem({
